@@ -47,11 +47,21 @@ manipulationButtons.classList.add(`column`,`flex`,`manipulationButtons`)
 add.onclick =function () {
     const li = document.createElement(`li`)
     li.classList.add(`li`)
-    let split = input.value.split(`=`)
-    name = split[0]
-    value = split[1]
-    li.innerText = name +`=`+value
-    list.appendChild(li)
+    const trim = input.value.trim()
+    if (trim.includes("=")){
+        let split = trim.split(`=`).map(piece => piece.trim())
+        name = split[0]
+        value = split[1]
+        if (name && value) {
+            li.innerText = name + `=` + value;
+            li.onclick = function () {
+                li.classList.toggle('selected');
+            };
+            list.appendChild(li);
+        } else {
+            alert("Обидві частини (name і value) мають бути заповнені!");
+        }
+    }
 }
 sortName.onclick = function () {
     const items = document.querySelectorAll(`li`)
@@ -82,7 +92,6 @@ sortValue.onclick = function (){
     itemsArray.forEach(item => ul.appendChild(item));
 }
 del.onclick = function () {
-    const ul = document.querySelector('ul');
-    ul.innerText = '';
-
+    const selectedItems = document.querySelectorAll('li.selected')
+    selectedItems.forEach(item => item.remove())
 }
