@@ -83,19 +83,19 @@ sortName.onclick = function () {// задав івент клік для кно�
     itemsArray.forEach(item => list.appendChild(item));//заповнив список відсортованими елементами
 }
 sortValue.onclick = function (){//задав івент клік для кнопки 'sortValue'
-    const items = document.querySelectorAll(`li`)
-    const itemsArray = Array.from(items)
-    itemsArray.sort((a,b) =>{
-        const A = a.innerText.split(`=`)[1]
-        const B = b.innerText.split(`=`)[1]
-        return A.length - B.length
+    const items = document.querySelectorAll(`li`)//получив всі елементи li
+    const itemsArray = Array.from(items)//зробив масив з усіх получених елементів
+    itemsArray.sort((a,b) =>{//створв функцію сортування
+        const A = a.innerText.split(`=`)[1] // створив змінну яка має значення value
+        const B = b.innerText.split(`=`)[1] // створив 2 змінну яка має значення value
+        return A.length - B.length // вивів відсортовані елементи
     })
 
-    const ul = document.querySelector('ul');
-    ul.innerText = '';
-    itemsArray.forEach(item => ul.appendChild(item));
+    const ul = document.querySelector('ul');//звернувся до списку
+    ul.innerText = '';//очистив список
+    itemsArray.forEach(item => ul.appendChild(item));//додав відсортовані елементи
 }
-del.onclick = function () {
-    const selectedItems = document.querySelectorAll('li.selected')
-    selectedItems.forEach(item => item.remove())
+del.onclick = function () {//додав івент клік для кнопки `del`
+    const Items = document.querySelectorAll('li.selected')//звернувся до всіх виділених елементів
+    Items.forEach(item => item.remove())//видалив виділені елементи
 }
