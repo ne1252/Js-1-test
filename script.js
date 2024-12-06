@@ -12,6 +12,7 @@ let sortName = document.createElement(`button`)
 let sortValue = document.createElement(`button`)
 let del = document.createElement(`button`)
 let manipulateSection = document.createElement(`div`)
+//створви всі об'єкти і їх бокси
 document.body.appendChild(h1)
 document.body.appendChild(addBox)
 inputbox.append(labelInput,input)
@@ -20,6 +21,8 @@ document.body.appendChild(manipulateSection)
 manipulationButtons.append(sortName,sortValue,del)
 listBox.append(nameList,list)
 manipulateSection.append(listBox, manipulationButtons)
+//зстворив дом структуру
+
 h1.innerText = `Test`
 labelInput.innerText = `Name=Value`
 add.innerText = `Add`
@@ -27,11 +30,12 @@ nameList.innerText = `Name/Value Pair List`
 sortName.innerText = `Sort by Name`
 sortValue.innerText = `Sort by Value`
 del.innerText =`Delete`
+//додав кожному оюєкту текс
 
 
 inputbox.classList.add(`inputbox`,`flex`)
 input.classList.add(`input`)
-addBox.classList.add(`flex`)
+addBox.classList.add(`addBox`)
 add.classList.add(`adder`)
 labelInput.classList.add(`tutorLabel`)
 h1.classList.add(`title`)
@@ -39,46 +43,46 @@ manipulateSection.classList.add(`manipulationBox`)
 listBox.classList.add(`flex`,`column`)
 list.classList.add(`list`)
 manipulationButtons.classList.add(`column`,`flex`,`manipulationButtons`)
+//присвоїв класи
 
 
 
 
-
-add.onclick =function () {
-    const li = document.createElement(`li`)
-    li.classList.add(`li`)
-    const trim = input.value.trim()
-    if (trim.includes("=")){
-        let split = trim.split(`=`).map(piece => piece.trim())
-        name = split[0]
-        value = split[1]
-        if (name && value) {
-            li.innerText = name + `=` + value;
-            li.onclick = function () {
-                li.classList.toggle('selected');
+add.onclick =function () { //звернувся до кнопки`add` івент клік
+    const li = document.createElement(`li`) // стіорив елемент списку
+    li.classList.add(`li`) // додав стилізацію для елементу
+    const trim = input.value.trim() //забрав всі пробіли з початку і кінця
+    if (trim.includes("=")){//перевірив чи має введений текст `=`
+        let split = trim.split(`=`).map(piece => piece.trim())//розділив інпут і видалив пробіли
+        name = split[0] // присвоїв першому елементу split name
+        value = split[1]// присвоїв першому елементу split value
+        if (name && value) { //перевірив чи є name і value
+            li.innerText = name + `=` + value; // задав текст для елементу списку
+            li.onclick = function () { //задав івент клік для елементу списку
+                li.classList.toggle('selected');// задав стилізацію для елементу списку яку надати і забрати
             };
-            list.appendChild(li);
-        } else {
+            list.appendChild(li); //додав ліст в список
+        } else {//вивів помилку якщо користувач погано ввів дані
             alert("Обидві частини (name і value) мають бути заповнені!");
         }
     }
 }
-sortName.onclick = function () {
-    const items = document.querySelectorAll(`li`)
-    const itemsArray = Array.from(items);
-    items.forEach(item => item.classList.add('li'));
+sortName.onclick = function () {// задав івент клік для кнопки 'sortName'
+    const items = document.querySelectorAll(`li`) //получив всі елементи списку
+    const itemsArray = Array.from(items); //зробив масив з усіх елементів списку
+    items.forEach(item => item.classList.add('li')); //додав стидізацю кожному елементу списку
 
-    itemsArray.sort((a,b) =>{
+    itemsArray.sort((a,b) =>{//задав функцію сортування
 
-        const A = a.innerText.split(`=`)[0]
-        const B = b.innerText.split(`=`)[0]
-        return A.length - B.length
+        const A = a.innerText.split(`=`)[0] // створив змінну яка має значення name
+        const B = b.innerText.split(`=`)[0] // створив 2змінну яка має значення name
+        return A.length - B.length //вивів сортування
     })
-    const ul = document.querySelector('ul');
-    list.innerText = '';
-    itemsArray.forEach(item => list.appendChild(item));
+    const ul = document.querySelector('ul');//получив елемент саисок
+    list.innerText = '';//очистив список
+    itemsArray.forEach(item => list.appendChild(item));//заповнив список відсортованими елементами
 }
-sortValue.onclick = function (){
+sortValue.onclick = function (){//задав івент клік для кнопки 'sortValue'
     const items = document.querySelectorAll(`li`)
     const itemsArray = Array.from(items)
     itemsArray.sort((a,b) =>{

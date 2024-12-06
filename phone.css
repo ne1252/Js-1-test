@@ -1,0 +1,19 @@
+@media screen and (max-width: 480px){
+    .list{
+        width: 200px;
+    }
+    .addBox{
+        width: 293px;
+    }
+    .manipulationButtons{
+        width: 242px;
+        margin-top: 5px;
+    }
+    .manipulationBox{
+        margin-top: 10px;
+    }
+    .adder{
+        height: 30px;
+        margin-top: 17px;
+    }
+}
