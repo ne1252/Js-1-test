@@ -21,7 +21,7 @@ document.body.appendChild(manipulateSection)
 manipulationButtons.append(sortName,sortValue,del)
 listBox.append(nameList,list)
 manipulateSection.append(listBox, manipulationButtons)
-//зстворив дом структуру
+//створив дом структуру
 
 h1.innerText = `Test`
 labelInput.innerText = `Name=Value`
@@ -30,7 +30,7 @@ nameList.innerText = `Name/Value Pair List`
 sortName.innerText = `Sort by Name`
 sortValue.innerText = `Sort by Value`
 del.innerText =`Delete`
-//додав кожному оюєкту текс
+//додав кожному об'єкту текс
 
 
 inputbox.classList.add(`inputbox`,`flex`)
